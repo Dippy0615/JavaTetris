@@ -71,15 +71,22 @@ public class Tetromino {
 				if((arr[_y][_x]>0) && (x+_x < 0 || x+_x > panel.grid.getWidth()-1 || y+_y > panel.grid.getHeight()-1)) {
 					shape.setArray(prevArray);
 					if(!tryPieceMove(-1,0)) {
-						tryPieceMove(0,1);
+						if(!tryPieceMove(1,0)) {
+							if(!tryPieceMove(-2,0)) {
+								tryPieceMove(2,0);
+							}
+						}
 					}
 					return false;
 				}
 				
 				if((arr[_y][_x]>0) && (panel.grid.getGridPos(x+_x, y+_y)>0)) {
-					shape.setArray(prevArray);
 					if(!tryPieceMove(-1,0)) {
-						tryPieceMove(0,1);
+						if(!tryPieceMove(1,0)) {
+							if(!tryPieceMove(-2,0)) {
+								tryPieceMove(2,0);
+							}
+						}
 					}
 					return false;
 				}
